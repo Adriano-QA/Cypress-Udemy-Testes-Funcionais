@@ -15,5 +15,15 @@ describe('Should test at a functional level', () => {
     cy.get('[data-test="nome"]').type('Conta_1')
     cy.get('.btn').click()
     cy.get('.toast-message').should('contain', 'inserida com sucesso')
+   })
+
+   it('Should update an account', () => {
+    cy.xpath("//table//td[contains(., 'Conta_1')]/..//i[@class='far fa-edit']").click()
+    cy.get('[data-test="nome"]')
+        .clear()
+        .type('Conta alterada')
+        cy.get('.btn').click()
+    cy.get('.toast-message').should('contain', 'atualizada com sucesso')
+    
    });
 });
