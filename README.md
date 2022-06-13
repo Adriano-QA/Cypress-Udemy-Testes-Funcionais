@@ -4,7 +4,7 @@
 
 Automatizar teste E2E na aplicação.
 
-Aplicação Automatizada: barrigareact.wcaquino.me
+Aplicação Automatizada: https://barrigareact.wcaquino.me
 
 ## Clonando e executando em sua máquina
 
