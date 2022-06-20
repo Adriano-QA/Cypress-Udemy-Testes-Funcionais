@@ -32,7 +32,15 @@ describe('Should test at a functional level', () => {
         .clear()
         .type('Conta alterada')
         cy.get(loc.CONTAS.BTN_SALVAR).click()
-    cy.get(loc.MESSAGE).should('contain', 'atualizada com sucesso')
-    
+    cy.get(loc.MESSAGE).should('contain', 'atualizada com sucesso')    
+   })
+
+   it('Should not create an account with same name', () => {
+    cy.acessarMenuConta()
+    cy.inserirConta('Conta alterada')
+    cy.get(loc.MESSAGE).should('contain', 'code 400')
+
+
+
    });
 });
