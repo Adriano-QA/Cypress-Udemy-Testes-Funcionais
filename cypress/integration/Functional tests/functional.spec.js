@@ -3,7 +3,6 @@
 import loc from '../../support/locators'
 import '../../support/commandsContas'
 
-
 describe('Should test at a functional level', () => {
    before(() => {
     cy.login('teste@qaadriano.com.br', 'qaadriano')
@@ -39,8 +38,21 @@ describe('Should test at a functional level', () => {
     cy.acessarMenuConta()
     cy.inserirConta('Conta alterada')
     cy.get(loc.MESSAGE).should('contain', 'code 400')
+   })
 
+   it('Should create a transaction', () => {
+    cy.get(loc.MENU.MOVIMENTACAO).click()
 
+    cy.get(loc.MOVIMENTACAO.DESCRICAO).type('Descricao') 
+    cy.get(loc.MOVIMENTACAO.VALOR).type('150')
+    cy.get(loc.MOVIMENTACAO.INTERESSADO).type('Inter')
+    cy.get(loc.MOVIMENTACAO.BTN_SALVAR).click()
+    cy.get(loc.MESSAGE).should('contain','sucesso') 
 
-   });
+    cy.get(loc.EXTRATO.LINHAS).should('have.length', 7)
+
+    cy.xpath(loc.EXTRATO.XP_BUSCA_ELEMENTO).should('exist')
+
+   })
+
 });
